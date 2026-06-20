@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "web1" do |web1|
     web1.vm.network "private_network", ip: "192.168.56.101"
     web1.vm.hostname = "web1"
-    web1.vm.synced_folder "../birdwatching-app", "/vagrant", disabled: false
+    web1.vm.synced_folder "../bird_watching_app", "/vagrant", disabled: false
     web1.vm.provider "virtualbox" do |vb|
        vb.memory = "1024"
     end
@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "web2" do |web2|
     web2.vm.network "private_network", ip: "192.168.56.102"
     web2.vm.hostname = "web2"
-    web2.vm.synced_folder "../birdwatching-app", "/vagrant", disabled: false
+    web2.vm.synced_folder "../bird_watching_app", "/vagrant", disabled: false
     web2.vm.provider "virtualbox" do |vb|
        vb.memory = "1024"
     end
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
     nginx.vm.network "private_network", ip: "192.168.56.103"
     nginx.vm.network "forwarded_port", guest: 80, host: 8080
     nginx.vm.hostname = "nginx"
-    nginx.vm.synced_folder "../birdwatching-app", "/vagrant", disabled: false
+    nginx.vm.synced_folder "../bird_watching_app", "/vagrant", disabled: false
     nginx.vm.provider "virtualbox" do |vb|
        vb.memory = "512"
     end
@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "db" do |db|
     db.vm.network "private_network", ip: "192.168.56.104"
     db.vm.hostname = "db"
-    db.vm.synced_folder "../birdwatching-app", "/vagrant", disabled: false
+    db.vm.synced_folder "../bird_watching_app", "/vagrant", disabled: false
     db.vm.provider "virtualbox" do |vb|
        vb.memory = "512"
     end
