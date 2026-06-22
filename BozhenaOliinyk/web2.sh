@@ -3,7 +3,7 @@ apt-get install -y nginx python3-pip python3-venv python3-flask
 
 rm -rf /var/www/bird_watching_app
 git clone -b GPT-46-Initial-project-infrastructure https://github.com/gpteam-org/birdwatching-app.git /var/www/bird_watching_app
-cd /var/www/bird_watching_app/web1
+cd /var/www/bird_watching_app/BozhenaOliinyk/web2
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
@@ -17,8 +17,8 @@ After=network.target
 
 [Service]
 User=www-data
-WorkingDirectory=/var/www/bird_watching_app/web1
-ExecStart=/var/www/bird_watching_app/web1/.venv/bin/gunicorn -w 3 -b 127.0.0.1:5000 app:app
+WorkingDirectory=/var/www/bird_watching_app/BozhenaOliinyk/web2
+ExecStart=/var/www/bird_watching_app/BozhenaOliinyk/web2/.venv/bin/gunicorn -w 3 -b 127.0.0.1:5000 app:app
 Restart=always
 
 [Install]
