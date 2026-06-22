@@ -9,8 +9,8 @@ apt-get install -y nginx python3 python3-venv python3-pip
 
 mkdir -p /opt/app/templates
 
-cp /vagrant/app/app.py /opt/app/app.py
-cp /vagrant/app/templates/index.html /opt/app/templates/index.html
+cp /vagrant_app/app.py /opt/app/app.py
+cp /vagrant_app/templates/index.html /opt/app/templates/index.html
 
 python3 -m venv /opt/app/venv
 /opt/app/venv/bin/pip install --quiet flask gunicorn
