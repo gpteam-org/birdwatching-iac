@@ -7,38 +7,17 @@ DB_IP="${2:-192.168.56.13}"
 apt-get update -y
 apt-get install -y nginx python3 python3-venv python3-pip
 
-mkdir -p /opt/app
-cat >/opt/app/app.py <<EOF
-from flask import Flask, jsonify
-import socket
+mkdir -p /opt/app/templates
 
-app = Flask(__name__)
-
-SERVER_NAME = "${SERVER_NAME}"
-DB_IP = "${DB_IP}"
-
-@app.route("/")
-def index():
-    return jsonify(
-        message=f"Hello from {SERVER_NAME}",
-        hostname=socket.gethostname(),
-        db_backend=DB_IP,
-    )
-
-@app.route("/health")
-def health():
-    return jsonify(status="ok"), 200
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
-EOF
+cp /vagrant/app/app.py /opt/app/app.py
+cp /vagrant/app/templates/index.html /opt/app/templates/index.html
 
 python3 -m venv /opt/app/venv
 /opt/app/venv/bin/pip install --quiet flask gunicorn
 
 cat >/etc/systemd/system/flaskapp.service <<EOF
 [Unit]
-Description=Flask app for ${SERVER_NAME}
+Description=Birdwatching Flask App (${SERVER_NAME})
 After=network.target
 
 [Service]
@@ -70,7 +49,6 @@ EOF
 
 rm -f /etc/nginx/sites-enabled/default
 ln -sf /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled/web.conf
-
 nginx -t
 systemctl enable nginx
 systemctl restart nginx

@@ -13,7 +13,7 @@ PG_CONF="/etc/postgresql/${PG_VERSION}/main/postgresql.conf"
 PG_HBA="/etc/postgresql/${PG_VERSION}/main/pg_hba.conf"
 
 sed -i "s/^#listen_addresses.*/listen_addresses = '*'/" "$PG_CONF"
-echo "host    all             all             192.168.56.0/24         md5" >> "$PG_HBA"
+echo "host all   all  192.168.56.0/24 md5" >> "$PG_HBA"
 
 sudo -u postgres psql -c "DO \$\$ BEGIN
     IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = '${DB_USER}') THEN
