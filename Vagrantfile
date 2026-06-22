@@ -1,10 +1,12 @@
+
+
 VAGRANTFILE_API_VERSION = "2"
 
 BOX = "ubuntu/jammy64"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  # Load Balancer
+  # Load Balancer 
   config.vm.define "lb" do |lb|
     lb.vm.box = BOX
     lb.vm.hostname = "lb"
@@ -17,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     lb.vm.provision "shell", path: "scripts/lb.sh"
   end
 
-  #Web Server 1
+  # Web Server 1 
   config.vm.define "web1" do |web1|
     web1.vm.box = BOX
     web1.vm.hostname = "web1"
@@ -29,7 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     web1.vm.provision "shell", path: "scripts/web.sh", args: ["WebServer 1", "192.168.56.13"]
   end
 
-  #Web Server 2
+  #  Web Server 2 
   config.vm.define "web2" do |web2|
     web2.vm.box = BOX
     web2.vm.hostname = "web2"
@@ -41,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     web2.vm.provision "shell", path: "scripts/web.sh", args: ["WebServer 2", "192.168.56.13"]
   end
 
-  #Database
+  # Database 
   config.vm.define "db" do |db|
     db.vm.box = BOX
     db.vm.hostname = "db"
