@@ -1,11 +1,33 @@
 apt-get update
-apt-get install -y nginx python3-pip python3-flask sshpass
-mkdir -p /var/www/templates
-cp /vagrant/web2/web2.html /var/www/templates/index.html
-cp /vagrant/web2/app.py /var/www/app.py
+apt-get install -y nginx python3-pip python3-venv python3-flask
 
-cd /var/www
-nohup python3 app.py > /dev/null 2>&1 &
+rm -rf /var/www/bird_watching_app
+git clone -b GPT-46-Initial-project-infrastructure https://github.com/gpteam-org/birdwatching-app.git /var/www/bird_watching_app
+cd /var/www/bird_watching_app/web2
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install gunicorn flask
+
+
+sudo tee /etc/systemd/system/bird_watching_app.service > /dev/null <<EOF
+[Unit]
+Description=Gunicorn Birdwatching
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory=/var/www/bird_watching_app/web2
+ExecStart=/var/www/bird_watching_app/web2/.venv/bin/gunicorn -w 3 -b 127.0.0.1:5000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable bird_watching_app
+sudo systemctl start bird_watching_app
 
 cat <<EOT > /etc/nginx/sites-available/default
 server {
