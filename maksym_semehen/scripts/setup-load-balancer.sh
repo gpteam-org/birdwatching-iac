@@ -25,6 +25,9 @@ server {
 }
 EOF'
 
+# AI assisted section
+# --- --- ---
+
 # setup modsecurity
 sudo mkdir -p /etc/nginx/modsec
 sudo wget -O /etc/nginx/modsec/modsecurity.conf https://raw.githubusercontent.com/SpiderLabs/ModSecurity/v3/master/modsecurity.conf-recommended
@@ -50,5 +53,6 @@ sudo bash -c 'cat > /etc/nginx/conf.d/modsecurity.conf <<EOF
 modsecurity on;
 modsecurity_rules_file /etc/nginx/modsec/main.conf;
 EOF'
+# --- --- ---
 
 sudo systemctl restart nginx

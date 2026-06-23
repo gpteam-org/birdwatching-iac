@@ -13,6 +13,9 @@ source venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
+# AI assisted section
+# --- --- ---
+
 # systemd service for Gunicorn
 sudo tee /etc/systemd/system/birdwatching-app.service > /dev/null <<EOF
 [Unit]
@@ -32,6 +35,8 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable birdwatching-app
 sudo systemctl start birdwatching-app
+
+# --- --- ---
 
 # nginx reverse proxy
 sudo tee /etc/nginx/sites-available/birdwatching-app > /dev/null <<EOF
