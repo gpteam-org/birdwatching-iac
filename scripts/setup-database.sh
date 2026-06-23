@@ -3,6 +3,11 @@
 sudo apt update
 sudo apt install -y postgresql openssl
 
+# add firewall
+sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx HTTP'
+sudo ufw --force enable
+
 sudo systemctl enable postgresql
 sudo systemctl start postgresql
 
