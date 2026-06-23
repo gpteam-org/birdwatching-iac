@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install -y neofetch python3 python3-pip python3-venv git nginx gunicorn
+sudo apt install -y python3 python3-pip python3-venv git nginx gunicorn
 
 # clone birdwatching-app
 git clone -b GPT-34-initial-application-and-infrastructure-setup https://github.com/gpteam-org/birdwatching-app.git /var/www/birdwatching-app

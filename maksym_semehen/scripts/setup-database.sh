@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt install -y neofetch postgresql openssl
+sudo apt install -y postgresql openssl
 
 sudo systemctl enable postgresql
 sudo systemctl start postgresql

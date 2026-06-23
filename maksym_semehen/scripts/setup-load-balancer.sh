@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sudo apt-get install -y neofetch nginx libnginx-mod-http-modsecurity git wget
+sudo apt-get install -y nginx libnginx-mod-http-modsecurity git wget
 
 # setup load balancer
 sudo rm -f /etc/nginx/sites-enabled/default
