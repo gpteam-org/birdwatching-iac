@@ -3,6 +3,11 @@
 sudo apt update
 sudo apt-get install -y nginx libnginx-mod-http-modsecurity git wget
 
+# add firewall
+sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx HTTP'
+sudo ufw --force enable
+
 # setup load balancer
 sudo rm -f /etc/nginx/sites-enabled/default
 
