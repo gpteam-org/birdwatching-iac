@@ -21,7 +21,7 @@ After=network.target
 
 [Service]
 User=www-data
-WorkingDirectory=/var/www/birdwatching-app
+WorkingDirectory=/var/www/birdwatching-app/maksym_semehen
 ExecStart=/var/www/birdwatching-app/maksym_semehen/venv/bin/gunicorn -w 3 -b 127.0.0.1:8000 app:app
 Restart=always
 
