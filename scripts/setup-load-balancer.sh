@@ -4,8 +4,8 @@ sudo apt update
 sudo apt-get install -y nginx libnginx-mod-http-modsecurity git wget
 
 # add firewall
-sudo ufw allow OpenSSH
-sudo ufw allow 'Nginx HTTP'
+sudo ufw allow 22/tcp # SSH
+sudo ufw allow 80/tcp # Nginx HTTP
 sudo ufw --force enable
 
 # setup load balancer
