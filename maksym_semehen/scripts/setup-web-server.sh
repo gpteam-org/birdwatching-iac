@@ -7,7 +7,7 @@ sudo apt install -y neofetch python3 python3-pip python3-venv git nginx gunicorn
 git clone -b GPT-34-initial-application-and-infrastructure-setup https://github.com/gpteam-org/birdwatching-app.git /var/www/birdwatching-app
 
 # install dependencies
-cd /var/www/birdwatching-app
+cd /var/www/birdwatching-app/maksym_semehen
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
@@ -22,7 +22,7 @@ After=network.target
 [Service]
 User=www-data
 WorkingDirectory=/var/www/birdwatching-app
-ExecStart=/var/www/birdwatching-app/venv/bin/gunicorn -w 3 -b 127.0.0.1:8000 app:app
+ExecStart=/var/www/birdwatching-app/maksym_semehen/venv/bin/gunicorn -w 3 -b 127.0.0.1:8000 app:app
 Restart=always
 
 [Install]
