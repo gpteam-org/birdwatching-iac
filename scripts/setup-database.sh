@@ -1,8 +1,5 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt install -y postgresql openssl ufw
-
 # add firewall
 sudo ufw allow 22/tcp # SSH
 sudo ufw allow 5432/tcp # PostgreSQL
