@@ -12,41 +12,46 @@ source "vagrant" "golden-images" {
   communicator = "ssh"
   source_path  = "debian/bookworm64"
   provider     = "virtualbox"
+  skip_add     = true # assumes that you already installed debian/bookworm64 if not will cause error
 }
 
 build {
-  # web server image
+  # build web server image
   source "source.vagrant.golden-images" {
-    name = "web-server"
+    name       = "web-server"
+    output_dir = "images/web-server"
   }
 
   provisioner "shell" {
-    only   = ["vagrant.web-server"]
-    inline = ["sudo apt update && sudo apt install -y python3 python3-pip python3-venv git nginx gunicorn ufw"]
+    inline = [
+      "sudo apt update",
+      "sudo apt install -y python3 python3-pip python3-venv git nginx gunicorn ufw"
+    ]
   }
-  
-  # load balancer image
+
+  # build load balancer image
   source "source.vagrant.golden-images" {
-    name = "load-balancer"
+    name       = "load-balancer"
+    output_dir = "images/load-balancer"
   }
 
   provisioner "shell" {
-    only   = ["vagrant.load-balancer"]
-    inline = ["sudo apt update && sudo apt install -y nginx libnginx-mod-http-modsecurity git wget ufw"]
+    inline = [
+      "sudo apt update",
+      "sudo apt install -y nginx libnginx-mod-http-modsecurity git wget ufw"
+    ]
   }
 
   # build database image
   source "source.vagrant.golden-images" {
-    name = "database"
+    name       = "database"
+    output_dir = "images/database"
   }
 
   provisioner "shell" {
-    only   = ["vagrant.database"]
-    inline = ["sudo apt update && sudo apt install -y postgresql openssl ufw"]
-  }
-
-  # store all images
-  post-processor "vagrant" {
-    output = "images/{{.BuildName}}-image.box"
+    inline = [
+      "sudo apt update",
+      "sudo apt install -y postgresql openssl ufw"
+    ]
   }
 }
