@@ -6,7 +6,7 @@ sudo ufw allow 80/tcp # Nginx HTTP
 sudo ufw --force enable
 
 # clone birdwatching-app
-git clone -b GPT-34-initial-application-and-infrastructure-setup https://github.com/gpteam-org/birdwatching-app.git /var/www/birdwatching-app
+git clone https://github.com/gpteam-org/birdwatching-app.git /var/www/birdwatching-app
 
 # install dependencies
 cd /var/www/birdwatching-app
