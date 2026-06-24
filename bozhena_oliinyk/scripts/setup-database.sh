@@ -18,7 +18,7 @@ DB_PASSWORD=$(openssl rand -base64 24)
 echo "$DB_PASSWORD" | sudo tee /root/birds_db_password.txt > /dev/null
 sudo chmod 600 /root/birds_db_password.txt
 
-# create database and user
+# create database, user and tabels
 sudo -u postgres psql <<EOF
 DROP DATABASE IF EXISTS birds_db;
 CREATE DATABASE birds_db;
