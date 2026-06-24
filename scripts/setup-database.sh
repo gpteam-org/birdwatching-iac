@@ -36,7 +36,6 @@ CREATE TABLE Posts (
   photo VARCHAR(100),
   description VARCHAR(100),
   location VARCHAR(100),
-  creator VARCHAR(100),
   user_id INT,
   FOREIGN KEY (user_id) REFERENCES Users(id)
 );
