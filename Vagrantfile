@@ -2,7 +2,7 @@ servers=[
   {
     :hostname => "database",
     :ip => "192.168.56.101",
-    :box => "debian/bookworm64",
+    :box => "database-image",
     :script => "scripts/setup-database.sh",
     :memory => 4096,
     :cpus => 2
@@ -10,7 +10,7 @@ servers=[
   {
     :hostname => "web-server-1",
     :ip => "192.168.56.102",
-    :box => "debian/bookworm64",
+    :box => "web-server-image",
     :script => "scripts/setup-web-server.sh",
     :memory => 2048,
     :cpus => 2
@@ -18,7 +18,7 @@ servers=[
   {
     :hostname => "web-server-2",
     :ip => "192.168.56.103",
-    :box => "debian/bookworm64",
+    :box => "web-server-image",
     :script => "scripts/setup-web-server.sh",
     :memory => 2048,
     :cpus => 2
@@ -26,7 +26,7 @@ servers=[
   {
     :hostname => "load-balancer",
     :ip => "192.168.56.104",
-    :box => "debian/bookworm64",
+    :box => "load-balancer-image",
     :script => "scripts/setup-load-balancer.sh",
     :memory => 1024,
     :cpus => 1

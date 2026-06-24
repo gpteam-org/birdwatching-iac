@@ -1,15 +1,12 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt install -y python3 python3-pip python3-venv git nginx gunicorn ufw
-
 # add firewall
 sudo ufw allow 22/tcp # SSH
 sudo ufw allow 80/tcp # Nginx HTTP
 sudo ufw --force enable
 
 # clone birdwatching-app
-git clone -b GPT-34-initial-application-and-infrastructure-setup https://github.com/gpteam-org/birdwatching-app.git /var/www/birdwatching-app
+git clone https://github.com/gpteam-org/birdwatching-app.git /var/www/birdwatching-app
 
 # install dependencies
 cd /var/www/birdwatching-app
