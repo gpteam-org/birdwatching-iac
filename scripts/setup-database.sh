@@ -28,7 +28,7 @@ GRANT CONNECT ON DATABASE birds_db TO developer;
 \c birds_db
 CREATE TABLE Users (
   id INT PRIMARY KEY,
-  login VARCHAR(100),
+  login VARCHAR(100) UNIQUE,
   password VARCHAR(100)
 );
 CREATE TABLE Posts (
