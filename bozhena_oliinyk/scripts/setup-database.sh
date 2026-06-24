@@ -25,6 +25,7 @@ CREATE DATABASE birds_db;
 DROP USER IF EXISTS developer;
 CREATE USER developer WITH ENCRYPTED PASSWORD '${DB_PASSWORD}';
 GRANT CONNECT ON DATABASE birds_db TO developer;
+\c birds_db
 CREATE TABLE Users (
   id INT PRIMARY KEY,
   login VARCHAR(100),
